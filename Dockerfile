@@ -14,15 +14,15 @@ RUN apt-get update && apt-get upgrade --assume-yes && apt-get install --assume-y
     libtool \
     make \
     pkg-config \
-    vim
+    vim && \
+    rm --force --recursive /var/lib/apt/lists/*
 
 # Install gRPC & Protobuf
 WORKDIR /root
-RUN git clone --single-branch --branch master --recursive -j4 https://github.com/grpc/grpc.git && \
+RUN git clone --branch=master --depth=1 --jobs=8 --recursive --single-branch \
+    https://github.com/grpc/grpc.git && \
     cd grpc && \
     make && \
     make install && \
     cd third_party/protobuf && \
     make install
-
-WORKDIR /root/grpc/examples

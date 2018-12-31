@@ -29,6 +29,8 @@ fi
 # Run a bash shell inside the container.
 docker run \
     --name ${CONTAINER_NAME}-shell \
+    --mount type=bind,source="$(pwd)/cpp-streaming-client",target="/root/cpp-streaming-client" \
+    --mount type=bind,source="$(pwd)/cpp-hello-world",target="/root/cpp-hello-world" \
     --interactive \
     --tty \
     --rm \
