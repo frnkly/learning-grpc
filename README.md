@@ -1,2 +1,6 @@
-# learning-grpc
-Playing around with gRPC
+# Learning to use gRPC
+
+```shell
+# Build the Docker container and run a bash shell:
+./run shell
+```
